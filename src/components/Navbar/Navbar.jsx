@@ -4,6 +4,7 @@ import logo from "../../assets/logo.png";
 import Dropdown from "react-bootstrap/Dropdown";
 import { Link } from "react-router-dom";
 const Navbar = ({ reloadNavbar }) => {
+
   const [cartquantity, setcartquantity] = useState(0);
   const [shows3, setShows3] = useState(false);
 
@@ -187,7 +188,7 @@ const Navbar = ({ reloadNavbar }) => {
 
           <ul className="s32">
             <li>
-              <Link className="stylenone">Home</Link>
+              <Link className="stylenone" to="/">Home</Link>
             </li>
             <li>
               <Dropdown>
@@ -207,10 +208,10 @@ const Navbar = ({ reloadNavbar }) => {
               </Dropdown>
             </li>
             <li>
-              <Link className="stylenone">About Us</Link>
+              <Link className="stylenone" to="/about">About Us</Link>
             </li>
             <li>
-              <Link className="stylenone">Contact Us</Link>
+              <Link className="stylenone" to="/contact">Contact Us</Link>
             </li>
             <li>
               <div className="cart">
