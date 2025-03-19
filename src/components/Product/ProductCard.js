@@ -15,7 +15,6 @@ const ProductCard = ({ data }) => {
     let cart = JSON.parse(localStorage.getItem("cart"));
     let productdata = data;
     if (cart) {
-      // alert('1 item is already added to cart')
       let itemincart = cart.find(
         (item) => item.productdata.ProductId === productdata.ProductId
       );
@@ -48,14 +47,12 @@ const ProductCard = ({ data }) => {
           quantity: count,
         },
       ];
-
-      // console.log(cart)
       localStorage.setItem("cart", JSON.stringify(cart));
     }
-    // setreloadnavbar(!reloadnavbar)
-    window.location.reload();
-    // toast.success('Item added to cart')
+
+    toast.success("Item added to cart");
   };
+
   return (
     <div className="product">
       <div className="s1">

@@ -72,7 +72,7 @@ const PageProduct = () => {
             {
               ReviewId: 1,
               Name: "vineet katiyar",
-              Email: "",
+              Email: "vineetkatiyar@gmail.com",
               Rating: 5,
               Date: "2023-08-01",
               Review:
@@ -81,7 +81,7 @@ const PageProduct = () => {
             {
               ReviewId: 2,
               Name: "vineet katiyar",
-              Email: "",
+              Email: "vineetkatiyar@gmail.com",
               Rating: 1,
               Date: "2023-08-01",
               Review:
@@ -90,7 +90,7 @@ const PageProduct = () => {
             {
               ReviewId: 3,
               Name: "vineet katiyar",
-              Email: "",
+              Email: "vineetkatiyar@gmail.com",
               Rating: 4,
               Date: "2023-08-01",
               Review:
@@ -106,6 +106,10 @@ const PageProduct = () => {
       setproductdata(temp.Data[0]);
       setactiveimg(temp.Data[0].ProductImage[0]);
     }
+  };
+
+  const submitReviewFunction = (e) => {
+    e.preventDefault();
   };
 
   useEffect(() => {
@@ -568,7 +572,8 @@ const PageProduct = () => {
     },
   ];
   const [reloadnavbar, setreloadnavbar] = useState(false);
-  const addtocart = () => {
+  const addtocart = (event) => {
+    event.preventDefault();
     let cart = JSON.parse(localStorage.getItem("cart"));
 
     if (cart) {
@@ -577,7 +582,7 @@ const PageProduct = () => {
         (item) => item.productdata.ProductId === productdata.ProductId
       );
       if (itemincart) {
-        cart = cart.map((item,index) => {
+        cart = cart.map((item, index) => {
           if (item.productdata.ProductId === productdata.ProductId) {
             return {
               ...item,
@@ -615,11 +620,6 @@ const PageProduct = () => {
   };
   return (
     <div className="productpage">
-      {/* <h1>Product id is - {prodid}</h1>
-            <p>
-                {JSON.stringify(productdata)}
-            </p> */}
-
       <Navbar reloadnavbar={reloadnavbar} />
 
       <div className="pc1">
@@ -701,8 +701,8 @@ const PageProduct = () => {
 
           <div className="btncont">
             <button
-              onClick={() => {
-                addtocart();
+              onClick={(event) => {
+                addtocart(event);
               }}
             >
               Add to Cart
@@ -750,7 +750,8 @@ const PageProduct = () => {
 
             <button
               className="inactive"
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 setshowreview(true);
               }}
             >
@@ -760,7 +761,7 @@ const PageProduct = () => {
         )}
         {showreview ? (
           <div className="reviewcont">
-            <form>
+            <form onSubmit={submitReviewFunction(event)}>
               <div className="fromgroup">
                 <label htmlFor="">Name</label>
                 <input type="text" />
@@ -973,7 +974,9 @@ const PageProduct = () => {
                 </div>
               </div>
 
-              <button>Submit</button>
+              <button onClick={submitReviewFunction}>
+                <Link to="/">Submit</Link>
+              </button>
             </form>
 
             <div className="allreview">
@@ -1117,7 +1120,6 @@ const PageProduct = () => {
                               </svg>
                             )}
                           </div>
-
                           <div className="star">
                             {item.Rating >= 5 ? (
                               <svg
@@ -1154,7 +1156,6 @@ const PageProduct = () => {
                         </div>
                         <span className="date">{item.Date}</span>
                       </div>
-
                       <div className="reviewbody">{item.Review}</div>
                     </div>
                   );

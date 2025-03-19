@@ -248,7 +248,8 @@ const Cart = () => {
                             >
                               <div className='quantity'>
                                 <button className='minus'
-                                  onClick={() => {
+                                  onClick={(e) => {
+                                    e.preventDefault();
                                     let newcartdata = [...cartdata]
 
                                     if (newcartdata[index].quantity > 1) {
@@ -261,7 +262,8 @@ const Cart = () => {
                                 >-</button>
                                 <span>{item.quantity}</span>
                                 <button className='plus'
-                                  onClick={() => {
+                                  onClick={(e) => {
+                                    e.preventDefault();
                                     let newcartdata = [...cartdata]
                                     newcartdata[index].quantity += 1
                                     setcartdata(newcartdata)

@@ -15,6 +15,7 @@ import UserProfile from './pages/User/UserProfile';
 import PrivacyPolicy from './pages/Extra/PrivacyPolicy';
 import Termsandconditions from './pages/Extra/Termsandconditions';
 import FAQ from './pages/Extra/FAQ'
+import ProductCard from './components/Product/ProductCard';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path='/user/:activepage' element={<UserProfile/>}/>
           <Route path='/privacypolicy' element={<PrivacyPolicy/>}/>
           <Route path='/termsandconditions' element={<Termsandconditions/>}/>
+          <Route path='/faq' element={<FAQ/>}/>
           <Route path='/faq' element={<FAQ/>}/>
           <Route path='*' element={<h1>404 page not found</h1>}/>
         </Routes>
